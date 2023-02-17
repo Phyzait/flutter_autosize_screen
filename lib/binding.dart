@@ -8,18 +8,17 @@ import 'package:flutter/rendering.dart';
 
 import 'auto_size_util.dart';
 
-
 void runAutoApp(Widget app) {
   AutoWidgetsFlutterBinding.ensureInitialized()
     ..scheduleAttachRootWidget(app)
     ..scheduleWarmUpFrame();
 }
 
-
 class AutoWidgetsFlutterBinding extends WidgetsFlutterBinding {
+  static late final instance = AutoWidgetsFlutterBinding();
+
   static WidgetsBinding ensureInitialized() {
-    if (WidgetsBinding.instance == null) AutoWidgetsFlutterBinding();
-    return WidgetsBinding.instance!;
+    return instance;
   }
 
   @override
